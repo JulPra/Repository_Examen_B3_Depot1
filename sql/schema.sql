@@ -19,6 +19,7 @@ CREATE TABLE Films INTO Application_Cinema (
 
 CREATE TABLE Seances INTO Application_Cinema (
   id_seance INT PRIMARY KEY AUTO_INCREMENT,
+  evenement VARCHAR(100) NOT NULL,
   numero_salle INT(255) NOT NULL
 );
 
@@ -33,4 +34,3 @@ CREATE TABLE Reservations INTO Application_Cinema (
   client FOREIGN KEY (id_utilisateur) REFERENCES Utilisateurs(id_utilisateur),
   reservation_film FOREIGN KEY (id_film) REFERENCES Films(id_film)
 );
-  
