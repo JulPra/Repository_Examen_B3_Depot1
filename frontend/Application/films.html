@@ -6,7 +6,27 @@
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
     <title>Films</title>
 </head>
+<header>
+    <h1>Grand Cinéma</h1>
+    <a href="reservations.html">Mes réservations</a>
+</header>
 <body>
-    <h1>Voici la liste des films disponibles : </h1>
+    <h2>Voici la liste des films disponibles : </h2>
+    <div id="movie-card">
+    <img id="movie-poster" src="https://unsplash.com">
+    
+    <div id="movie-content">
+      <div id="movie-header">
+        <h3 id="movie-title">Interstellar</h3>
+      </div>
+      <div id="movie-meta">2014 • Science-Fiction • 2h 49m</div>
+      <div id="movie-room">Salle 004</div>
+      <p id="movie-synopsis">
+        Un groupe d'explorateurs utilise une faille récemment découverte dans l'espace-temps pour repousser les limites humaines et entreprendre un voyage stellaire.
+      </p>
+      <button type="button" id="reservation">Réserver</button>
+    </div>
+  </div>
+  <script src="scripts/script2.js"></script>
 </body>
 </html>

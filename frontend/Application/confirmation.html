@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmation de réservation</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Grand Cinéma</h1>
+        <a href="reservations.html">Mes réservations</a>
+    </header>
+
+    <main>
+        <h2>Confirmation de réservation</h2>
+
+        <p>Film sélectionné : <strong id="film"></strong></p>
+        <p>Votre réservation a été enregistrée.</p>
+
+        <h3>Votre QR code</h3>
+        <div id="qrcode"></div>
+        <p>Présentez ce QR code à l'entrée du cinéma.</p>
+
+        <a href="films.html">Retour aux films</a>
+    </main>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const film = params.get("film");
+        const id = params.get("id");
+
+        const elementFilm = document.getElementById("film");
+        const elementQR = document.getElementById("qrcode");
+
+        if (!film || !id) {
+            elementFilm.textContent = "Aucun film sélectionné.";
+        } else {
+            elementFilm.textContent = film;
+
+            // Récupérer les réservations déjà enregistrées
+            let reservations = [];
+
+            try {
+                reservations = JSON.parse(
+                    localStorage.getItem("reservations") || "[]"
+                );
+
+                if (!Array.isArray(reservations)) {
+                    reservations = [];
+                }
+            } catch (e) {
+                reservations = [];
+            }
+
+            // Éviter de créer plusieurs réservations si la page est actualisée
+            let reservation = reservations.find(r => r.id === id);
+
+            if (!reservation) {
+                reservation = {
+                    id: id,
+                    film: film,
+                    date: new Date().toLocaleString("fr-FR")
+                };
+
+                reservations.push(reservation);
+
+                localStorage.setItem(
+                    "reservations",
+                    JSON.stringify(reservations)
+                );
+            }
+
+            // Générer le QR code à partir des informations de réservation
+            new QRCode(elementQR, {
+                text: JSON.stringify({
+                    id: reservation.id,
+                    film: reservation.film
+                }),
+                width: 200,
+                height: 200,
+                correctLevel: QRCode.CorrectLevel.H
+            });
+        }
+    </script>
+</body>
+</html>

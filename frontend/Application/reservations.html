@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes réservations - Grand Cinéma</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+    <style>
+        .reservation {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .qrcode {
+            margin-top: 15px;
+        }
+
+        .reservation button {
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Grand Cinéma</h1>
+        <a href="films.html">Retour aux films</a>
+    </header>
+
+    <main>
+        <h2>Mes réservations</h2>
+
+        <div id="liste-reservations"></div>
+    </main>
+
+    <script>
+        const liste = document.getElementById("liste-reservations");
+
+        let reservations = [];
+
+        try {
+            reservations = JSON.parse(
+                localStorage.getItem("reservations") || "[]"
+            );
+
+            if (!Array.isArray(reservations)) {
+                reservations = [];
+            }
+        } catch (e) {
+            reservations = [];
+        }
+
+        if (reservations.length === 0) {
+            liste.textContent = "Vous n'avez aucune réservation.";
+        } else {
+            reservations.forEach(reservation => {
+                const carte = document.createElement("article");
+                carte.className = "reservation";
+
+                const titre = document.createElement("h3");
+                titre.textContent = reservation.film;
+
+                const date = document.createElement("p");
+                date.textContent = "Date de réservation : " +
+                    (reservation.date || "Non renseignée");
+
+                const qr = document.createElement("div");
+                qr.className = "qrcode";
+
+                const boutonSupprimer = document.createElement("button");
+                boutonSupprimer.textContent = "Supprimer la réservation";
+
+                carte.append(titre, date, qr, boutonSupprimer);
+                liste.appendChild(carte);
+
+                new QRCode(qr, {
+                    text: JSON.stringify({
+                        id: reservation.id,
+                        film: reservation.film
+                    }),
+                    width: 160,
+                    height: 160,
+                    correctLevel: QRCode.CorrectLevel.H
+                });
+
+                boutonSupprimer.addEventListener("click", () => {
+                    const confirmation = window.confirm(
+                        "Voulez-vous supprimer cette réservation ?"
+                    );
+
+                    if (!confirmation) return;
+
+                    reservations = reservations.filter(
+                        r => r.id !== reservation.id
+                    );
+
+                    localStorage.setItem(
+                        "reservations",
+                        JSON.stringify(reservations)
+                    );
+
+                    carte.remove();
+
+                    if (reservations.length === 0) {
+                        liste.textContent =
+                            "Vous n'avez aucune réservation.";
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
