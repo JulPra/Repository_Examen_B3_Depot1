@@ -12,19 +12,58 @@
 </header>
 <body>
     <h2>Voici la liste des films disponibles : </h2>
-    <div id="movie-card">
-    <img id="movie-poster" src="https://unsplash.com">
-    
-    <div id="movie-content">
-      <div id="movie-header">
-        <h3 id="movie-title">Interstellar</h3>
+
+    <div class="movie-card">
+    <img class="movie-poster" src="https://unsplash.com">
+    <div class="movie-content">
+      <div class="movie-header">
+        <h3 class="movie-title">Interstellar</h3>
       </div>
-      <div id="movie-meta">2014 • Science-Fiction • 2h 49m</div>
-      <div id="movie-room">Salle 004</div>
-      <p id="movie-synopsis">
+      <div class="movie-meta">2014 • Science-Fiction • 2h 49m</div>
+      <div class="movie-room">Salle 004</div>
+      <div class="movie-places">Nombre de places : 170</div>
+      <div class="movie-places-disponibles">Nombre de places disponibles : 70</div>
+      <p class="movie-synopsis">
         Un groupe d'explorateurs utilise une faille récemment découverte dans l'espace-temps pour repousser les limites humaines et entreprendre un voyage stellaire.
       </p>
-      <button type="button" id="reservation">Réserver</button>
+      <button type="button" class="reservation">Réserver</button>
+      <p class="message-reservation" role="alert"></p>
+    </div>
+  </div>
+
+    <div class="movie-card">
+    <img class="movie-poster" src="https://unsplash.com">
+    <div class="movie-content">
+      <div class="movie-header">
+        <h3 class="movie-title">Star Wars, épisode IV : Un nouvel espoir</h3>
+      </div>
+      <div class="movie-meta">1977 • Science-Fiction • 2h 1m</div>
+      <div class="movie-room">Salle 006</div>
+      <div class="movie-places">Nombre de places : 170</div>
+      <div class="movie-places-disponibles">Nombre de places disponibles : 0 - Plus de places disponibles</div>
+      <p class="movie-synopsis">
+        Un jeune ouvrier agricole, Luke Skywalker, intercepte un appel à l'aide de la princesse Leia, afin de la délivrer de Dark Vador et de l'Empire.
+      </p>
+      <button type="button" id="reservation-non-disponible" disabled>Réserver</button>
+      <p class="message-reservation" role="alert"></p>
+    </div>
+  </div>
+
+    <div class="movie-card">
+    <img class="movie-poster" src="https://unsplash.com">
+    <div class="movie-content">
+      <div class="movie-header">
+        <h3 class="movie-title">Stargate, la porte des étoiles</h3>
+      </div>
+      <div class="movie-meta">1994 • Science-Fiction • 2h 10m</div>
+      <div class="movie-room">Salle 007</div>
+      <div class="movie-places">Nombre de places : 170</div>
+      <div class="movie-places-disponibles">Nombre de places disponibles : 140</div>
+      <p class="movie-synopsis">
+        Un jeune docteur, Daniel Jackson, est rejeté des égyptologues, en raison de ses théories sur les pyramides d'Égypte, qui seraient des lieux d'atterrissage pour des vaisseaux spatiaux.
+      </p>
+      <button type="button" class="reservation">Réserver</button>
+      <p class="message-reservation" role="alert"></p>
     </div>
   </div>
   <script src="scripts/script2.js"></script>
