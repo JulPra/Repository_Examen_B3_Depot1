@@ -1,0 +1,15 @@
+.reservation {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .qrcode {
+            margin-top: 15px;
+        }
+
+        .reservation button {
+            margin-top: 10px;
+            cursor: pointer;
+        }
