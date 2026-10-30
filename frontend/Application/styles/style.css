@@ -1,0 +1,116 @@
+body {
+    background-color: RGB(200,225,255);
+}
+
+body header {
+    background-color: RGB(80,100,140);
+    padding: 0px;
+    border: 0px;
+    margin: 0px;
+}
+
+body header h1 {
+    color: white;
+    font-family: "Georgia";
+    font-size: 40px;
+}
+
+body header a {
+    font-family: "Bahnschrift";
+    font-size: 18px;
+    color: white
+}
+
+body h2 {
+    font-size: 32px;
+    text-align: center;
+    font-family: "Bahnschrift";
+}
+
+body form {
+    display: flex;
+    background-color: RGB(170,180,220);
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    border: 3px solid RGB(120,140,180);
+    border-radius: 10px;
+    margin: 15px;
+    gap: 10px;
+}
+
+.form-login, .form-mdp {
+  display: block !important;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+body form div label {
+    font-family: "Bahnschrift";
+    font-size: 24px;
+}
+
+body form p {
+    font-family: "Bahnschrift";
+    font-size: 20px;
+}
+
+body form input {
+    cursor: pointer;
+}
+
+.movie-title, .movie-meta, .movie-room, .movie-places, .movie-places-disponibles, .movie-synopsis {
+    font-size: 18px;
+    font-family: "Bahnschrift";
+}
+
+.movie-content {
+    padding: 10px;
+    border-radius: 10px;
+    background-color: RGB(100,120,160);
+}
+.movie-card {
+    padding: 30px;
+    border: 1px solid;
+    border-radius: 20px;
+    background-color: RGB(120,140,180);
+    margin-bottom: 15px;
+}
+
+.movie-poster {
+    width: 200px;
+    height: auto;
+}
+
+.message-reservation {
+    font-family: "Bahnschrift";
+    font-size: 20px;
+}
+
+.reservation {
+    cursor: pointer;
+}
+
+body main {
+    margin-top: 20px;
+    justify-content: center;
+    background-color: RGB(180,190,220);
+    text-align: center;
+    padding: 40px;
+    border: 2px solid RGB(50,60,80);
+    border-radius: 15px;
+}
+body main h3 {
+    font-family: "Bahnschrift";
+    font-size: 24px;
+}
+
+body main p {
+    font-family: "Bahnschrift";
+    font-size: 20px;
+}
+
+body main div {
+    display: flex;
+    justify-content: center;
+}
